@@ -2,5 +2,15 @@
     "$schema": "https://openapi.vercel.sh/vercel.json",
     "buildCommand": "npm run build",
     "outputDirectory": "dist/apps/app",
-    "devCommand": "nx serve app --skip-nx-cache"
+    "devCommand": "nx serve app --skip-nx-cache",
+    "crons": [
+        {
+            "path": "/api/cron/league",
+            "schedule": "0 0 * * 0"
+        },
+        {
+            "path": "/api/cron/category",
+            "schedule": "0 0 * * 0"
+        }
+    ]
 }
