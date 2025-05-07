@@ -1,0 +1,74 @@
+<div class="flex flex-col h-screen overflow-hidden">
+  <nav class="navbar bg-base-200 shadow-sm">
+    <div class="flex-none">
+      <button class="btn btn-square btn-ghost block md:hidden">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          class="inline-block h-5 w-5 stroke-current"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="flex-1">
+      <a class="btn btn-ghost text-xl" routerLink="/">POE2Hub</a>
+    </div>
+
+    <div class="flex gap-2 items-center">
+      <select class="select select-md" [ngModel]="selectedLeague()?.id" (ngModelChange)="selectLeague($event)">
+        @for (league of leagues(); track league.id) { @let selected = league.id === selectedLeague()?.id;
+        <option [value]="league.id" [selected]="selected">
+          {{ league.name }}
+        </option>
+        }
+      </select>
+
+      <div class="badge badge-info text-info-content badge-xl">
+        <img
+          src="https://web.poecdn.com//gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lNb2RWYWx1ZXMiLCJzY2FsZSI6MSwicmVhbG0iOiJwb2UyIn1d/2986e220b3/CurrencyModValues.png"
+          alt="Divine Orb"
+          class="size-6"
+        />
+        {{ selectedLeague()?.divineRatio }}
+      </div>
+    </div>
+  </nav>
+  <div class="flex-1 flex">
+    <aside class="hidden md:block">
+      <ul class="menu bg-base-200 rounded-box w-56 h-full">
+        <li>
+          <h2 class="menu-title">화폐</h2>
+          <ul>
+            @for (category of currencyCategories(); track category.id) {
+            <li>
+              <a class="flex items-center" [routerLink]="['/economy', category.id]" routerLinkActive="active">
+                <img [src]="category.icon" [alt]="category.id" class="size-6" />
+                {{ category.name }}
+              </a>
+            </li>
+            }
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="menu-title">고유</h2>
+          <ul>
+            @for (category of uniqueCategories(); track category.id) {
+            <li>
+              <a class="flex items-center" [routerLink]="['/economy', category.id]" routerLinkActive="active">
+                <img [src]="category.icon" [alt]="category.id" class="size-6" />
+                {{ category.name }}
+              </a>
+            </li>
+            }
+          </ul>
+        </li>
+      </ul>
+    </aside>
+    <div class="flex-1">
+      <router-outlet />
+    </div>
+  </div>
+</div>

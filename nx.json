@@ -1,8 +1,12 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "defaultProject": "app",
   "defaultBase": "master",
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
     "production": [
       "default",
       "!{projectRoot}/.eslintrc.json",
@@ -33,7 +37,9 @@
       "options": {
         "targetName": "test"
       },
-      "exclude": ["apps/server-e2e/**/*"]
+      "exclude": [
+        "apps/server-e2e/**/*"
+      ]
     },
     {
       "plugin": "@nx/playwright/plugin",
@@ -65,19 +71,31 @@
   "targetDefaults": {
     "@angular-devkit/build-angular:browser": {
       "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
     },
     "e2e-ci--**/*": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "server": {
       "cache": true
     },
     "@angular-devkit/build-angular:application": {
       "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
     }
   },
   "generators": {
