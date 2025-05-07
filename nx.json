@@ -32,7 +32,8 @@
       "plugin": "@nx/jest/plugin",
       "options": {
         "targetName": "test"
-      }
+      },
+      "exclude": ["apps/server-e2e/**/*"]
     },
     {
       "plugin": "@nx/playwright/plugin",
@@ -42,6 +43,16 @@
     },
     {
       "plugin": "@nx/rspack/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps"
+      }
+    },
+    {
+      "plugin": "@nx/webpack/plugin",
       "options": {
         "buildTargetName": "build",
         "serveTargetName": "serve",
@@ -62,6 +73,11 @@
     },
     "server": {
       "cache": true
+    },
+    "@angular-devkit/build-angular:application": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "generators": {
@@ -70,6 +86,9 @@
       "linter": "eslint",
       "style": "css",
       "unitTestRunner": "jest"
+    },
+    "@nx/angular:component": {
+      "style": "css"
     }
   }
 }

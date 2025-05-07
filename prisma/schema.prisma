@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id      String  @id
+  name    String? @unique
+  icon    String
+  section Int     @default(0)
+  order   Int     @default(0)
+
+  items Item[]
+}
+
+model Item {
+  id   String @id @default(cuid(2))
+  name String @unique
+  icon String
+
+  category   Category    @relation(fields: [categoryId], references: [id])
+  categoryId String
+  prices     ItemPrice[]
+}
+
+model ItemPrice {
+  id    String @id @default(cuid(2))
+  price Float
+
+  item   Item   @relation(fields: [itemId], references: [id])
+  itemId String
+
+  createdAt DateTime @default(now())
+  league    League   @relation(fields: [leagueId], references: [id])
+  leagueId  String
+}
+
+model League {
+  id          String  @id @default(cuid(2))
+  label       String  @unique
+  name        String? @unique
+  divineRatio Int
+
+  itemPrices ItemPrice[]
+}
