@@ -1,7 +1,7 @@
 import { computed, Injectable } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { injectTrpcClient } from '../../trpc-client';
-import { Category } from '@prisma/client';
+import { Category } from '../../../prisma';
 
 @Injectable({ providedIn: 'root' })
 export class CategoryStore {

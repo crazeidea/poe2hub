@@ -1,6 +1,6 @@
 import { Injectable, linkedSignal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { League } from '@prisma/client';
+import { League } from '../../../prisma';
 import { injectTrpcClient } from '../../trpc-client';
 
 @Injectable({ providedIn: 'root' })
