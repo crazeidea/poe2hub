@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "build": "npm run db:generate && nx build app",
     "db:generate": "npx prisma@6.5.0 generate --no-engine",
     "db:push": "npx prisma@6.5.0 db push",
     "db:push:force": "npx prisma@6.5.0 db push --force-reset"
