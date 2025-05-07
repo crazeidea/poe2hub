@@ -1,5 +1,5 @@
+import { PrismaClient } from '@prisma/client';
 import { withAccelerate } from '@prisma/extension-accelerate';
-import { PrismaClient } from '../../../prisma';
 
 export const prisma = new PrismaClient({
   datasourceUrl:

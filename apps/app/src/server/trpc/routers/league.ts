@@ -1,6 +1,6 @@
 import { publicProcedure, router } from '../trpc';
-import { prisma } from '../prisma';
 import { POE2ScoutService } from '../../poe2scout/service';
+import { prisma } from '../prisma';
 
 export const LeagueRouter = router({
   findAll: publicProcedure.query(async (event) => {

@@ -7,6 +7,6 @@
     "useDefineForClassFields": false
   },
   "files": ["src/main.ts", "src/main.server.ts"],
-  "include": ["src/**/*.d.ts", "src/app/pages/**/*.page.ts", "src/server/middleware/**/*.ts"],
+  "include": ["src/**/*.d.ts", "src/app/pages/**/*.page.ts", "src/server/middleware/**/*.ts", "src/prisma/**/*"],
   "exclude": ["**/*.test.ts", "**/*.spec.ts"]
 }
